@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+:root {
+  --blue: rgb(91, 209, 215);
+  --blue-hover: rgb(71, 189, 195);
+  --orange: rgb(240, 191, 76);
+  --grey-light: #f5f5f5;
+  --grey-medium: #e5e5e5;
+  --grey-dark: #6b6b6b;
+  --text: #333333;
+  --text-light: #666666;
+  --bg: #ffffff;
+  --border: #e5e5e5;
+  
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+  margin-top: 0;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Site Header */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+/* Elementor Menu Styles */
+.elementor-menu-wrapper {
+  position: relative;
+}
+
+.elementor-nav-menu--main {
+  display: block;
+}
+
+.elementor-nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+}
+
+.elementor-nav-menu .menu-item {
+  margin: 0;
+}
+
+.elementor-item {
+  display: block;
+  padding: 12px 0;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+  
+  &:hover,
+  &.elementor-item-active {
+    color: var(--blue);
+  }
+  
+  &.elementor-item-active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--blue);
+  }
+}
+
+.elementor-menu-toggle {
+  display: none;
+  cursor: pointer;
+  padding: 8px;
+  background: none;
+  border: none;
+  color: var(--text);
+  
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .elementor-menu-toggle__icon--close {
+    display: none;
+  }
+  
+  &.elementor-menu-toggle--active {
+    .elementor-menu-toggle__icon--open {
+      display: none;
+    }
+    .elementor-menu-toggle__icon--close {
+      display: block;
+    }
+  }
+}
+
+.elementor-nav-menu--dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 12px 0;
+  min-width: 200px;
+  z-index: 100;
+  
+  .elementor-nav-menu {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .elementor-item {
+    padding: 12px 20px;
+    
+    &:hover {
+      background: var(--grey-light);
+    }
+    
+    &.elementor-item-active::after {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .elementor-nav-menu--main {
+    display: none;
+  }
+  
+  .elementor-menu-toggle {
+    display: block;
+  }
+  
+  .elementor-nav-menu--dropdown[aria-hidden="false"] {
+    display: block;
+  }
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  
+  &:hover {
+    background: var(--blue-hover);
+    text-decoration: none;
+  }
+}
+
+/* Color Div - Orange accent */
+.color-div {
+  background: var(--orange);
+  padding: 20px;
+  border-radius: 8px;
+  color: var(--text);
+}
+
+/* Card Styles */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+/* Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
